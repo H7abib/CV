@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <title>Request a Service</title>
     <style>
         body {
             background-image: url('https://i.imgur.com/KRYOfRv.jpg');
@@ -21,15 +21,36 @@
             font-size: 1.2em;
         }
 
-        /* Hide JotForm branding */
-        .jotform-powered {
-            display: none !important;
+        /* Additional styles for a better layout */
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 800px;
+            border: none;
         }
     </style>
 </head>
 <body>
-  
+    <h1>Request a Service</h1>
+    <p>Please fill out the form below to request a service:</p>
+
     <!-- JotForm Embed -->
     <script type="text/javascript" src="https://form.jotform.com/jsform/242425434485559"></script>
+
+    <script>
+        // Try to hide JotForm branding by targeting the iframe content
+        document.addEventListener('DOMContentLoaded', function() {
+            var iframe = document.querySelector('iframe');
+            if (iframe) {
+                iframe.onload = function() {
+                    var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                    var branding = iframeDocument.querySelector('.formFooter-height, .formFooter');
+                    if (branding) {
+                        branding.style.display = 'none';
+                    }
+                };
+            }
+        });
+    </script>
 </body>
 </html>
