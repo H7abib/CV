@@ -10,26 +10,31 @@
       padding: 0;
       height: 100%;
       width: 100%;
+      position: relative;
     }
 
     iframe {
       border: none;
       width: 100%;
-      height: calc(100vh - 100px); /* Adjust height to hide branding */
+      height: 100vh;
+      position: relative;
+      z-index: 1; /* Keep the iframe behind the black box */
     }
 
     .black-box {
-      position: fixed;
+      position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 50px; /* Adjust height as needed */
+      height: 50px; /* Adjust height to cover branding */
       background-color: black;
+      z-index: 2; /* Ensure the black box is on top */
     }
   </style>
 </head>
 <body>
 
+  <!-- Embed the form iframe -->
   <iframe
     id="JotFormIFrame-242425434485559"
     title="Detailed Service Request"
@@ -38,10 +43,10 @@
     allow="geolocation; microphone; camera; fullscreen"
     src="https://form.jotform.com/242425434485559"
     frameborder="0"
-    scrolling="no"
+    scrolling="yes"
   ></iframe>
-  
-  <!-- Black box to cover bottom section -->
+
+  <!-- Black box to overlay and hide JotForm branding at the bottom -->
   <div class="black-box"></div>
 
 </body>
